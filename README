@@ -1,0 +1,29 @@
+This folder contains fortran codes magmap.f and color.f and their executables magmap and
+color, plus some examples.
+
+magmap can be used to predict the magnetic field from IGRF models which are  supplied internally
+within the program, or from a user supplied spherical harmonic field model.
+
+Mutliple options for use are described in documentation in magmap.pdf
+Executable version is magmap
+Source code is in magmap.f
+To compile in a UNix shell
+% gfortran magmap.f -o magmap
+to run using commnads provided in Magin
+% magmap <Magin
+This produces IGRF 2020 prediction at the specified locations
+First task is to check these are correct as magmap was just updated to contain post-2010
+IGRFs, and haven't checked it yet.
+
+Check using one of the online calculator http://www.geomag.bgs.ac.uk/data_service/models_compass/igrf_calc.html
+
+If all looks ok then can try the mapping tool. See e.g ex4mgp.txt
+% magmap <ex4mgp.txt
+
+This outputs a grid of radial field values at the core-mantle boundary for plotting using
+color. 2 field models are used in ex4mpg.txt--  OIFM  (externally supplied) and IGRF contained in magmap
+
+$color <tmp.plt
+
+produces a postcsript output file (default labeled "mypost"), can be viewed  in X windows with ghostscript
+% gs mypost 

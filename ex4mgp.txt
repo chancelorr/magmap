@@ -1,0 +1,19 @@
+file OIFM.dat
+norm S
+
+field R
+lmax 10
+radius 0.547
+proj A
+coast
+color 
+output oifm.mat
+plot
+continue
+
+igrf 1990
+coast
+output igrf.mat
+continue
+
+quit
