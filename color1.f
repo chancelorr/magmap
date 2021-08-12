@@ -1681,7 +1681,7 @@ c
       common /noir/ scutum,kolors,art(4,levmx),kart(levmx),loutln(levmx)
       common /pallet/ many,npal(10),hue(28,10),sat(28,10),bri(28,10)
       common /inout/ inp,iout,inf,info
-      common /local/ color(1),black(2)
+      common /local/ col(1),black(2)
       common /outfil/ output
 c
       dimension hw(3), xyax(4), zlim(2), rlim(2)
@@ -1853,12 +1853,12 @@ c
 c
 c  Transition levels have been set or inherited from previous plot
 c  Choose colors from a standard palette
-      call getval('palette', color, 3, nblck)
+      call getval('palette', col, 3, nblck)
 c  Check alternative spelling "pallet"
-      if (nblck.lt. 0) call getval('pallet', color, 3, nblck)
+      if (nblck.lt. 0) call getval('pallet', col, 3, nblck)
       if (nblck.gt. 0 .or. kolors.eq. 0) then
         kolors=nlev
-        match=nint(color(1))
+        match=nint(col(1))
         if (info.ge. 1) write(*,'(a,i3)')
      $    ' Colors drawn from standard palette ',match
 c
@@ -3083,14 +3083,14 @@ c______________________________________________________________________
 c  Sets the color attributes of the various palette and default color
 c  schemes.  Setting the variables in /pallet/ is the main task
 c
-      common /local/ color(1),black(2)
+      common /local/ col(1),black(2)
 c
       parameter (levmx=100)
       common /noir/ scutum,kolors,art(4,levmx),kart(levmx),loutln(levmx)
 c
       common /pallet/ many,npal(10),hue(28,10),sat(28,10),bri(28,10)
 c
-      data color/0/,  black/ 0.7, 2.0/
+      data col/0/,  black/ 0.7, 2.0/
       data kolors/0/, art/levmx*1.0,levmx*1.0,levmx*1.0,levmx*1.0/
 c
       data many/7/
